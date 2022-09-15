@@ -173,8 +173,8 @@ router.post('/forgotpassword', [
 
 
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
+        host: 'smtp.netcorecloud.net',
+        port: '25',
         auth: {
             user: process.env.outlookEmail,
             pass: process.env.outlookPassword
@@ -182,7 +182,7 @@ router.post('/forgotpassword', [
     });
 
     const options = {
-        from: process.env.outlookEmail,
+        from: 'minarsvn@pepisandbox.com',
         to: req.body.email,
         subject: 'Reset Password for Noteslify',
         html: `You are receiving this email because you(maybe someone else) wanted to change your password.\nIf it was not you, ignore this email.If you requested to change your password, please go to the following link: <a href='http://localhost:3000/resetpassword/${req.body.email}/${fpToken}'>Click Here</a>`
