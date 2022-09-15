@@ -173,7 +173,7 @@ router.post('/forgotpassword', [
 
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.netcorecloud.net',
+        host: 'smtp-relay.sendinblue.com',
         port: '587',
         auth: {
             user: process.env.outlookEmail,
