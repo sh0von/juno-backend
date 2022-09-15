@@ -11,6 +11,7 @@ const passport = require('passport');
 const session = require('express-session');
 const GoogleStrategy = require('passport-google-oidc');
 const nodemailer = require("nodemailer");
+var smtpTransport = require('nodemailer-smtp-transport');
 const { v4: uuidv4 } = require('uuid');
 const fpSchema = require('../models/ForgotPassword');
 
@@ -173,7 +174,8 @@ router.post('/forgotpassword', [
 
 
     const transporter = nodemailer.createTransport({
-        service: 'hotmail',
+        service: 'gmail',
+        host: 'smtp.gmail.com',
         auth: {
             user: process.env.outlookEmail,
             pass: process.env.outlookPassword
