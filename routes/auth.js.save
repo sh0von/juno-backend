@@ -88,7 +88,7 @@ router.post('/register', [
 
     } catch (error) {
         console.error(error);
-        return res.status(500).send("Internal Server11 Error");
+        return res.status(500).send("Internal Server Error");
     }
 });
 
@@ -141,6 +141,14 @@ router.post('/login', [
         return res.status(500).send("Internal Server Error");
     }
 });
+
+
+
+
+
+
+
+
 
 // Route 6: Forgot Password: POST: http://localhost:8181/api/auth/forgotpassword. No Login Required
 router.post('/forgotpassword', [
