@@ -173,7 +173,7 @@ router.post('/forgotpassword', [
 
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp-relay.sendinblue.com',
+        host: 'smtp.mandrillapp.com',
         port: '587',
         auth: {
             user: process.env.outlookEmail,
@@ -184,8 +184,8 @@ router.post('/forgotpassword', [
     const options = {
         from: 'minar.svn@gmail.com',
         to: req.body.email,
-        subject: 'Reset Password for D- Tracker',
-        html: `You are receiving this email because you(maybe someone else) wanted to change your password.\nIf it was not you, ignore this email.If you requested to change your password, please go to the following link: <a href='https://note-frontend-alpha.vercel.app/resetpassword/${req.body.email}/${fpToken}'>Click Here</a>`
+        subject: 'Reset Password for Juno',
+        html: `You are receiving this email because you(maybe someone else) wanted to change your password.\nIf it was not you, ignore this email.If you requested to change your password, please go to the following link: <a href='https://jun0.vercel.app/resetpassword/${req.body.email}/${fpToken}'>Click Here</a>`
     };
 
     transporter.sendMail(options, (err, info) => {
