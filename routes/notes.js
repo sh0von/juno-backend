@@ -15,7 +15,6 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // Route 1: Creating a new Note: POST: http://localhost:8181/api/notes/addnote. Login Required
 router.post('/addnote', fetchuser, [
-    body('title', "Title cannot be blank.").isLength({ min: 1 }),
     body('description', "Description cannot be black.").isLength({ min: 1 }),
 ], async (req, res) => {
     
@@ -28,7 +27,6 @@ router.post('/addnote', fetchuser, [
         const theUser = await UserSchema.findById(req.user.id);
 
         const newNote = await NoteSchema.create({
-            title: req.body.title,
             description: req.body.description,
             authorId: req.user.id,
             authorUsername: theUser.username
@@ -106,7 +104,6 @@ router.get('/getnote/:id', fetchuser, async (req, res) => {
 
 // Route 5: Updating Note: GET: http://localhost:8181/api/notes/updatenote/:id. Login Required
 router.put('/updatenote/:id', fetchuser, [
-    body('title', "Title cannot be blank.").isLength({ min: 1 }),
     body('description', "Description cannot be black.").isLength({ min: 1 }),
 ], async (req, res) => {
 
@@ -122,7 +119,7 @@ router.put('/updatenote/:id', fetchuser, [
             return res.status(403).json({ error: "You cannot access some other user's notes" });
         }
         
-        const newNote = await NoteSchema.findByIdAndUpdate(req.params.id, { title: req.body.title, description: req.body.description });
+        const newNote = await NoteSchema.findByIdAndUpdate(req.params.id, {description: req.body.description });
 
         res.status(200).json({ success: "The Note has been Updated Successfully!" })
 
