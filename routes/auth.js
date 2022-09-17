@@ -104,7 +104,7 @@ router.post('/register', [
 // Route 2: Authenticating an existing user: POST: http://localhost:8181/api/auth/login. No Login Required
 router.post('/login', [
     body('username', "Username should be at least 4 characters.").isLength({ min: 4 }),
-    body('password', "Password Should Be At Least 8 Characters.").isLength({ min: 8 }),
+    body('password', "Password Should Be At Least 8 Characters.").isLength({ min: 4 }),
 ], async (req, res) => {
 
     const errors = validationResult(req);
@@ -261,7 +261,7 @@ router.post('/checktoken', [
 // Route 8: Changing Password: POST: http://localhost:8181/api/auth/changepassword. No Login Required
 router.post('/changepassword', [
     body('email', "Please Enter correct Email Address.").isEmail(),
-    body('password', "Password should be at least 8 characters.").isLength({ min: 8 }),
+    body('password', "Password should be at least 8 characters.").isLength({ min: 4 }),
     body('token', "Please authenticate with a correct token").exists(),
 ], async (req, res) => {
 
