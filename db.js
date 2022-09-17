@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 const mongoURI = "mongodb+srv://minarsvn:1K8oXVXRqxmaW7Hy@cluster0.pad3few.mongodb.net";
 
 const connectToMongo = () => {
-    mongoose.connect(mongoURI, { dbName: 'noteslify' }, () => {
+    mongoose.connect(mongoURI, { dbName: 'juno' }, () => {
         console.log("Connected To Mongo Successfully!!");
     })
 };
